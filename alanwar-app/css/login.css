@@ -1,0 +1,76 @@
+/* ============================================================
+   login.css — Desain Khusus Halaman Login
+   ============================================================ */
+
+.login-page { min-height: 100vh; display: flex; background: var(--bg); }
+
+.login-decor {
+  position: relative; width: 60%; min-height: 100vh;
+  background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary-darker) 35%, var(--navy) 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 40px; overflow: hidden;
+}
+.login-decor::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255,255,255,0.015) 50px, rgba(255,255,255,0.015) 51px), repeating-linear-gradient(-45deg, transparent, transparent 50px, rgba(255,255,255,0.015) 50px, rgba(255,255,255,0.015) 51px); pointer-events: none; }
+.login-decor::after { content: ''; position: absolute; width: 420px; height: 420px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(22.5deg); opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0L61.8 38.2L100 50L61.8 61.8L50 100L38.2 61.8L0 50L38.2 38.2Z' fill='white'/%3E%3C/svg%3E"); background-size: contain; background-repeat: no-repeat; background-position: center; pointer-events: none; animation: rotateSlow 90s linear infinite; }
+@keyframes rotateSlow { to { transform: translate(-50%, -50%) rotate(382.5deg); } }
+
+.decor-particles { position: absolute; inset: 0; pointer-events: none; }
+.decor-particles span { position: absolute; width: 5px; height: 5px; background: rgba(255,255,255,0.15); border-radius: 50%; animation: particleFloat 8s ease-in-out infinite; }
+.decor-particles span:nth-child(1) { top: 12%; left: 18%; animation-delay: 0s; animation-duration: 7s; } .decor-particles span:nth-child(2) { top: 28%; left: 72%; animation-delay: 1.2s; animation-duration: 9s; } .decor-particles span:nth-child(3) { top: 55%; left: 12%; animation-delay: 2.5s; animation-duration: 8s; } .decor-particles span:nth-child(4) { top: 70%; left: 80%; animation-delay: 0.8s; animation-duration: 10s; }
+@keyframes particleFloat { 0%, 100% { transform: translateY(0); opacity: 0.15; } 50% { transform: translateY(-30px); opacity: 0.5; } }
+
+.decor-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; max-width: 480px; animation: fadeUp 0.8s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.decor-logo { width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 3px solid var(--gold); object-fit: cover; margin-bottom: 16px; box-shadow: 0 0 30px rgba(201,168,76,0.2); }
+.decor-name { font-family: var(--font-arabic); font-size: 1.9rem; font-weight: 700; color: white; text-align: center; line-height: 1.2; margin-bottom: 28px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.decor-name span { display: block; font-size: 0.85rem; font-family: var(--font-ui); letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; font-weight: 600; }
+
+.stats-title { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 16px; font-weight: 600; }
+.stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; width: 100%; margin-bottom: 16px; }
+.stat-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 12px 8px; text-align: center; transition: background 0.3s; }
+.stat-card:hover { background: rgba(255,255,255,0.1); }
+.stat-number { font-size: 1.6rem; font-weight: 800; color: white; display: block; line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 0.7rem; color: rgba(255,255,255,0.6); font-weight: 500; text-transform: uppercase; }
+
+.gender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; margin-bottom: 28px; }
+.gender-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 14px; display: flex; align-items: center; gap: 12px; }
+.gender-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.gender-icon svg { width: 18px; height: 18px; }
+.gender-icon.putra { background: rgba(59,130,246,0.2); color: #60A5FA; } .gender-icon.putri { background: rgba(236,72,153,0.2); color: #F472B6; }
+.gender-info .stat-number { font-size: 1.3rem; margin-bottom: 2px; } .gender-info .stat-label { font-size: 0.75rem; }
+
+.btn-register { background: var(--gold); color: var(--primary-darker); font-weight: 700; font-size: 0.9rem; padding: 12px 28px; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(201,168,76,0.3); text-decoration: none; }
+.btn-register svg { width: 18px; height: 18px; }
+.btn-register:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,0.4); background: #d4af5a; color: var(--primary-darker); }
+
+.login-form-panel { width: 40%; display: flex; align-items: center; justify-content: center; padding: 40px 32px; position: relative; }
+.login-form-wrapper { width: 100%; max-width: 360px; animation: fadeUp 0.7s 0.15s ease both; }
+.form-header { margin-bottom: 32px; } .form-header h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; } .form-header p { color: var(--text-muted); font-size: 0.9rem; }
+
+.form-group { margin-bottom: 20px; } .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 6px; }
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.input-icon { position: absolute; left: 12px; width: 18px; height: 18px; color: var(--text-muted); transition: color var(--transition); pointer-events: none; }
+.input-wrapper input { width: 100%; padding: 12px 12px 12px 40px; border: 2px solid var(--border); border-radius: var(--radius-sm); font-size: 0.9rem; outline: none; transition: all var(--transition); }
+.input-wrapper input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(10,104,71,0.08); }
+.toggle-password { position: absolute; right: 10px; background: none; border: none; padding: 4px; color: var(--text-muted); cursor: pointer; display: flex; }
+.toggle-password svg { width: 18px; height: 18px; }
+
+.btn-login { width: 100%; padding: 12px 24px; border: none; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all var(--transition); box-shadow: 0 4px 16px rgba(10,104,71,0.3); position: relative; overflow: hidden; }
+.btn-login:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(10,104,71,0.4); }
+.btn-login:disabled { cursor: not-allowed; opacity: 0.8; }
+.btn-login .btn-text { transition: opacity 0.2s; } .btn-login.loading .btn-text { opacity: 0; }
+.btn-login .btn-spinner { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0; } .btn-login.loading .btn-spinner { opacity: 1; }
+
+.form-footer { text-align: center; margin-top: 28px; font-size: 0.78rem; color: var(--text-muted); }
+
+/* --- RESPONSIF LOGIN --- */
+@media (max-width: 1024px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .login-page { flex-direction: column; }
+  .login-decor { width: 100%; min-height: auto; padding: 32px 20px; }
+  .decor-logo { width: 70px; height: 70px; margin-bottom: 12px; }
+  .decor-name { font-size: 1.5rem; margin-bottom: 20px; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .login-form-panel { width: 100%; padding: 24px 16px 40px; }
+}
+@media (max-width: 400px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .gender-grid { grid-template-columns: 1fr; } }
