@@ -1,0 +1,139 @@
+/* ============================================================
+   global.css — Design Token, Reset, Tipografi, Komponen Universal
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+
+:root {
+  --primary:        #0A6847;
+  --primary-dark:   #064E34;
+  --primary-darker: #032E1F;
+  --primary-light:  #E4F3EC;
+  --primary-50:     #F0FAF5;
+
+  --navy:        #0F1B2D;
+  --navy-light:  #1A2D47;
+  --navy-muted:  #2A3F5C;
+
+  --gold:        #C9A84C;
+  --gold-light:  #F0DCA0;
+  --gold-dark:   #A07E2E;
+
+  --bg:          #F4F6F9;
+  --card:        #FFFFFF;
+  --text:        #1A1A2E;
+  --text-secondary: #4A5568;
+  --text-muted:  #94A3B8;
+  --border:      #E2E8F0;
+  --border-light:#F1F5F9;
+
+  --danger:      #DC2626;
+  --danger-light:#FEF2F2;
+  --success:     #059669;
+  --success-light:#ECFDF5;
+  --warning:     #D97706;
+  --warning-light:#FFFBEB;
+  --info:        #2563EB;
+  --info-light:  #EFF6FF;
+
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.06);
+  --shadow:      0 4px 16px rgba(0,0,0,0.07);
+  --shadow-lg:   0 12px 40px rgba(0,0,0,0.10);
+
+  --radius-sm:   6px;
+  --radius:      10px;
+  --radius-lg:   16px;
+
+  --font-ui:     'Outfit', sans-serif;
+  --font-arabic: 'Amiri', serif;
+  --transition:  0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; }
+img, svg { display: inline-block; vertical-align: middle; max-width: 100%; }
+button { cursor: pointer; font-family: var(--font-ui); }
+input, select, textarea { font-family: var(--font-ui); font-size: 0.95rem; }
+
+h1, h2, h3, h4, h5, h6 { color: var(--text); line-height: 1.25; font-weight: 700; }
+h1 { font-size: 2rem; } h2 { font-size: 1.5rem; } h3 { font-size: 1.25rem; }
+
+/* --- FIX UTAMA: Universal SVG Icons --- */
+svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.btn svg, .btn-action svg, .nav-item svg, .toggle-password svg {
+  width: 1em;
+  height: 1em;
+}
+.input-icon svg { width: 18px; height: 18px; }
+.btn-login svg, .btn-register svg { width: 20px; height: 20px; }
+
+/* --- Tombol --- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 22px; border: none; border-radius: var(--radius-sm);
+  font-weight: 600; font-size: 0.9rem; transition: all var(--transition); white-space: nowrap;
+}
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; box-shadow: 0 4px 14px rgba(10,104,71,0.3); }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(10,104,71,0.4); }
+.btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+.btn-outline:hover { background: var(--primary); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-sm { padding: 6px 14px; font-size: 0.82rem; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; }
+
+/* --- Badge --- */
+.badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; }
+.badge-success { background: var(--success-light); color: var(--success); }
+.badge-danger  { background: var(--danger-light);  color: var(--danger);  }
+.badge-warning { background: var(--warning-light); color: var(--warning); }
+.badge-info    { background: var(--info-light);    color: var(--info);    }
+
+/* --- Toast --- */
+.toast-container { position: fixed; top: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+.toast { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow-lg); border-left: 4px solid var(--primary); font-size: 0.9rem; animation: toastIn 0.35s ease; max-width: 380px; }
+.toast.error { border-left-color: var(--danger); } .toast.success { border-left-color: var(--success); }
+.toast-exit { animation: toastOut 0.3s ease forwards; }
+@keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes toastOut { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(40px); } }
+
+.spinner { display: inline-block; width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.6s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+
+.hidden { display: none !important; }
+
+/* --- Custom Confirm Modal --- */
+.confirm-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+  z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+.confirm-box {
+  background: var(--card); border-radius: var(--radius-lg); width: 100%; max-width: 400px;
+  box-shadow: var(--shadow-xl); text-align: center; padding: 32px 24px;
+}
+.confirm-icon { margin-bottom: 16px; color: var(--warning); }
+.confirm-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.confirm-msg { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.5; }
+.confirm-actions { display: flex; gap: 10px; justify-content: center; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
